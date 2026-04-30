@@ -1,173 +1,41 @@
-// import { Component, OnInit, inject, signal } from "@angular/core";
-// import { CurrencyPipe, DatePipe } from "@angular/common";
-// import { RouterLink } from "@angular/router";
-// import { ApiService } from "../../services/api.service";
-// import { AuthService } from "../../services/auth.service";
-// import { NotificationsService } from "../../services/notifications.service";
-// import { Member, MemberStats, Payment } from "../../models/types";
+import { Component } from '@angular/core';
 
-// @Component({
-//   selector: "app-dashboard",
-//   standalone: true,
-//   imports: [CurrencyPipe, DatePipe, RouterLink],
-//   template: `
-//     <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
-//       <div>
-//         <h2 class="mb-1">
-//           Welcome back, {{ (auth.member()?.fullName || "").split(" ")[0] }}
-//         </h2>
-//         <p class="text-muted mb-0">Here is a quick overview of your stokvel account.</p>
-//       </div>
-//       <button class="btn btn-primary" routerLink="/payments">
-//         <i class="bi bi-plus-lg me-1"></i>Record a payment
-//       </button>
-//     </div>
+@Component({
+  selector: 'app-dashboard',
+  imports: [],
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.scss'
+})
+export class DashboardComponent {
+[x: string]: any;
+  // private api = inject(ApiService);
+  // auth = inject(AuthService);
+  // notifs = inject(NotificationsService);
 
-//     <div class="row g-3 mb-4">
-//       <div class="col-sm-6 col-lg-3">
-//         <div class="card stat-card p-3 h-100">
-//           <div class="text-muted small">Total contributed</div>
-//           <div class="h4 mb-0">{{ stats()?.totalVerified ?? 0 | currency: "ZAR":"R " }}</div>
-//         </div>
-//       </div>
-//       <div class="col-sm-6 col-lg-3">
-//         <div class="card stat-card p-3 h-100" style="border-left-color:#ffc107">
-//           <div class="text-muted small">Pending verification</div>
-//           <div class="h4 mb-0">{{ stats()?.totalPending ?? 0 | currency: "ZAR":"R " }}</div>
-//         </div>
-//       </div>
-//       <div class="col-sm-6 col-lg-3">
-//         <div class="card stat-card p-3 h-100" style="border-left-color:#0dcaf0">
-//           <div class="text-muted small">Payments submitted</div>
-//           <div class="h4 mb-0">{{ stats()?.paymentsCount ?? 0 }}</div>
-//         </div>
-//       </div>
-//       <div class="col-sm-6 col-lg-3">
-//         <div class="card stat-card p-3 h-100" style="border-left-color:#6c757d">
-//           <div class="text-muted small">Monthly contribution</div>
-//           <div class="h4 mb-0">
-//             {{ member()?.monthlyContribution ?? 0 | currency: "ZAR":"R " }}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
+  // member = signal<Member | null>(null);
+  // stats = signal<MemberStats | null>(null);
+  // recent = signal<Payment[]>([]);
+  // loading = signal(true);
 
-//     <div class="row g-3">
-//       <div class="col-lg-8">
-//         <div class="card p-3 p-md-4 h-100">
-//           <div class="d-flex justify-content-between align-items-center mb-3">
-//             <h5 class="mb-0">Recent payments</h5>
-//             <a routerLink="/payments" class="small">View all</a>
-//           </div>
-//           @if (loading()) {
-//             <div class="text-center py-4">
-//               <div class="spinner-border text-success"></div>
-//             </div>
-//           } @else if (recent().length === 0) {
-//             <p class="text-muted mb-0">
-//               You have not submitted any payments yet.
-//               <a routerLink="/payments">Upload your first proof of payment</a>.
-//             </p>
-//           } @else {
-//             <div class="table-responsive">
-//               <table class="table table-sm align-middle mb-0">
-//                 <thead class="text-muted small">
-//                   <tr>
-//                     <th>Date</th>
-//                     <th>Amount</th>
-//                     <th>Method</th>
-//                     <th>Reference</th>
-//                     <th>Status</th>
-//                   </tr>
-//                 </thead>
-//                 <tbody>
-//                   @for (p of recent(); track p.id) {
-//                     <tr>
-//                       <td>{{ p.paidAt | date: "mediumDate" }}</td>
-//                       <td class="fw-semibold">{{ p.amount | currency: "ZAR":"R " }}</td>
-//                       <td class="text-capitalize">{{ p.method }}</td>
-//                       <td class="text-muted">{{ p.reference || "—" }}</td>
-//                       <td>
-//                         <span
-//                           class="badge"
-//                           [class.bg-success]="p.status === 'verified'"
-//                           [class.bg-warning]="p.status === 'pending'"
-//                           [class.text-dark]="p.status === 'pending'"
-//                           [class.bg-danger]="p.status === 'rejected'"
-//                           >{{ p.status }}</span
-//                         >
-//                       </td>
-//                     </tr>
-//                   }
-//                 </tbody>
-//               </table>
-//             </div>
-//           }
-//         </div>
-//       </div>
+  // ngOnInit(): void {
+  //   this.api.getMe().subscribe({
+  //     next: (res) => {
+  //       this.member.set(res.member);
+  //       this.auth.setMember(res.member);
+  //       this.stats.set(res.stats);
+  //     },
+  //   });
+  //   this.api.listPayments().subscribe({
+  //     next: (res) => {
+  //       this.recent.set(res.payments.slice(0, 5));
+  //       this.loading.set(false);
+  //     },
+  //     error: () => this.loading.set(false),
+  //   });
+  // }
 
-//       <div class="col-lg-4">
-//         <div class="card p-3 p-md-4 h-100">
-//           <h5 class="mb-3">Quick actions</h5>
-//           <div class="d-grid gap-2">
-//             <button class="btn btn-outline-primary text-start" routerLink="/payments">
-//               <i class="bi bi-cloud-upload me-2"></i>Upload proof of payment
-//             </button>
-//             <button class="btn btn-outline-primary text-start" (click)="openNotifs()">
-//               <i class="bi bi-bell me-2"></i>View notifications
-//               @if (notifs.unread() > 0) {
-//                 <span class="badge bg-danger ms-1">{{ notifs.unread() }}</span>
-//               }
-//             </button>
-//             <button class="btn btn-outline-primary text-start" routerLink="/profile">
-//               <i class="bi bi-person me-2"></i>Update my profile
-//             </button>
-//           </div>
-//           <hr />
-//           <h6 class="mb-2">Member details</h6>
-//           <div class="small text-muted">
-//             <div><i class="bi bi-envelope me-2"></i>{{ member()?.email }}</div>
-//             @if (member()?.phone) {
-//               <div><i class="bi bi-telephone me-2"></i>{{ member()?.phone }}</div>
-//             }
-//             @if (member()?.joinDate) {
-//               <div><i class="bi bi-calendar-event me-2"></i>Joined {{ member()?.joinDate | date }}</div>
-//             }
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   `,
-// })
-// export class DashboardComponent implements OnInit {
-//   private api = inject(ApiService);
-//   auth = inject(AuthService);
-//   notifs = inject(NotificationsService);
-
-//   member = signal<Member | null>(null);
-//   stats = signal<MemberStats | null>(null);
-//   recent = signal<Payment[]>([]);
-//   loading = signal(true);
-
-//   ngOnInit(): void {
-//     this.api.getMe().subscribe({
-//       next: (res) => {
-//         this.member.set(res.member);
-//         this.auth.setMember(res.member);
-//         this.stats.set(res.stats);
-//       },
-//     });
-//     this.api.listPayments().subscribe({
-//       next: (res) => {
-//         this.recent.set(res.payments.slice(0, 5));
-//         this.loading.set(false);
-//       },
-//       error: () => this.loading.set(false),
-//     });
-//   }
-
-//   openNotifs(): void {
-//     this.notifs.refresh();
-//     this.notifs.open();
-//   }
-// }
+  // openNotifs(): void {
+  //   this.notifs.refresh();
+  //   this.notifs.open();
+  // }
+}

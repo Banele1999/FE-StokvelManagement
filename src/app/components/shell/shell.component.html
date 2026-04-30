@@ -1,5 +1,5 @@
 <nav class="navbar navbar-brand-bar navbar-expand-lg px-3 px-md-4 shadow-sm">
-    <a class="navbar-brand text-white fw-bold" routerLink="/dashboard">
+    <a class="navbar-brand text-white fw-bold" href="/dashboard">
         <i class="bi bi-people-fill me-2"></i>Stokvel
     </a>
     <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse"
@@ -9,13 +9,13 @@
     <div class="collapse navbar-collapse" id="navMain">
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
-                <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+                <a class="nav-link" href="/dashboard" routerLinkActive="active">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/payments" routerLinkActive="active">Payments</a>
+                <a class="nav-link" href="/payments" routerLinkActive="active">Payments</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profile</a>
+                <a class="nav-link" href="/profile" routerLinkActive="active">Profile</a>
             </li>
         </ul>
         <div class="d-flex align-items-center gap-2">
@@ -35,9 +35,9 @@
     </div>
 </nav>
 
-<!-- <main class="container-fluid container-xl py-4 px-3 px-md-4">
+<main class="container-fluid container-xl py-4 px-3 px-md-4">
     <router-outlet></router-outlet>
-</main> -->
+</main>
 
-<!-- <app-notifications-modal></app-notifications-modal> -->
-<!-- <app-chatbox></app-chatbox> -->
+<app-notifications-modal></app-notifications-modal>
+<app-chatbox></app-chatbox>

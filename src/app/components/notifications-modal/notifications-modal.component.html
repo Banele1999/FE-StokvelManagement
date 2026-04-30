@@ -1,0 +1,53 @@
+<h3>Notication modal work!</h3>
+
+<!-- @if (svc.showModal()) {
+<div class="modal-backdrop fade show" (click)="svc.close()"></div>
+<div class="modal fade show d-block" tabindex="-1" role="dialog" style="z-index:1060">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="bi bi-bell-fill text-brand me-2"></i>Notifications
+                    @if (svc.unread() > 0) {
+                    <span class="badge bg-danger ms-2">{{ svc.unread() }} new</span>
+                    }
+                </h5>
+                <button type="button" class="btn-close" (click)="svc.close()"></button>
+            </div>
+            <div class="modal-body">
+                @if (svc.notifications().length === 0) {
+                <p class="text-center text-muted my-4">You have no notifications yet.</p>
+                }
+                @for (n of svc.notifications(); track n.id) {
+                <div class="p-3 mb-2 rounded border" [class.bg-light]="n.read" [class.border-start]="!n.read"
+                    [class.border-3]="!n.read" [class.border-success]="!n.read">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <div class="fw-semibold">
+                                <i class="bi" [ngClass]="iconFor(n.type)"></i>
+                                {{ n.title }}
+                            </div>
+                            <div class="text-muted small">{{ n.createdAt | date: "medium" }}</div>
+                        </div>
+                        @if (!n.read) {
+                        <button class="btn btn-sm btn-link p-0" (click)="svc.markRead(n.id)">
+                            Mark read
+                        </button>
+                        }
+                    </div>
+                    <div class="mt-2">{{ n.message }}</div>
+                </div>
+                }
+            </div>
+            <div class="modal-footer">
+                @if (svc.unread() > 0) {
+                <button class="btn btn-outline-primary" (click)="svc.markAllRead()">
+                    Mark all as read
+                </button>
+                }
+                <button class="btn btn-primary" (click)="svc.close()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+} -->

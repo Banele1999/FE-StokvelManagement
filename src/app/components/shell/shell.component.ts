@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from "@angular/router";
+import { NotificationsModalComponent } from "../notifications-modal/notifications-modal.component";
+import { ChatboxComponent } from "../chatbox/chatbox.component";
 
 @Component({
   selector: 'app-shell',
-  imports: [],
+  imports: [RouterOutlet, NotificationsModalComponent, ChatboxComponent],
   templateUrl: './shell.component.html',
   styleUrl: './shell.component.scss'
 })
