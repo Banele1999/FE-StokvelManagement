@@ -1,14 +1,16 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject } from "@angular/core";
+import { DatePipe, NgClass } from "@angular/common";
+import { NotificationsService } from "../../services/notifications.service";
 
 @Component({
   selector: 'app-notifications-modal',
-  imports: [],
+  imports: [DatePipe, NgClass],
   templateUrl: './notifications-modal.component.html',
   styleUrl: './notifications-modal.component.scss',
   host: { class: "d-contents" },
 })
 export class NotificationsModalComponent {
-  // svc = inject(NotificationsService);
+  svc = inject(NotificationsService);
 
   iconFor(type: string): string {
     switch (type) {
